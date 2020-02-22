@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-item *ngIf="loanding">
+  <ion-spinner name="crescent"></ion-spinner>
+</ion-item>
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar type="tel" inputmode="numeric" (ionChange)="searchByPhone($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-content padding *ngIf="customers.data?.length == 0">
+    <ion-button expand="block" routerLink="/new" routerDirection="root">
+      Crear
+    </ion-button>
+   </ion-content>
+   <ion-content padding *ngIf="errors">
+    {{errors}}
+   </ion-content>
+  <ion-list> 
+    <ion-item *ngFor="let customer of customers.data" [routerLink]="['/details/', customer.id]">
+      <ion-label  class="ion-text-capitalize"  >
+        {{customer.firstname}}  {{customer.lastname}} 
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

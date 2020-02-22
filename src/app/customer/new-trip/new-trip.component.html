@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title>Registrar Viaje</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form  [formGroup]="formcustomer">
+        <ion-item class="ion-activated">
+          <ion-label>Pais</ion-label>
+          <ion-input  type="text" formControlName="country" ></ion-input>
+        </ion-item>
+        <ion-item class="ion-activated">
+          <ion-label>Ciudad</ion-label>
+          <ion-input  type="text" formControlName="city" > </ion-input>
+        </ion-item>
+        
+        <ion-item class="ion-activated">
+          <ion-label>fecha</ion-label>
+          <ion-datetime placeholder="Selecciona la Fecha" formControlName="dateofservice"></ion-datetime>
+         
+        </ion-item>
+        <ion-item>
+        <ion-button color="success" block (click)="save()">Guardar</ion-button>
+        <ion-button ion-button block (click)="closed()" >salir</ion-button>
+      </ion-item>
+      </form>
+    </ion-card-content>
+    </ion-card>
+
+  
+ 
+</ion-content>

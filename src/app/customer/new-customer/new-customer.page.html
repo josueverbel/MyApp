@@ -1,0 +1,57 @@
+
+
+<ion-content>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title>
+      <ion-button slots="end" routerLink="/" ><ion-icon  name="arrow-back"></ion-icon></ion-button>
+        Nuevo Cliente
+    </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form  [formGroup]="formcustomer">
+        <ion-item class="ion-activated">
+          <ion-label>Nombres</ion-label>
+          <ion-input  type="text" formControlName="firstname" ></ion-input>
+        </ion-item>
+        <ion-item class="ion-activated">
+          <ion-label>Apellidos</ion-label>
+          <ion-input  type="text" formControlName="lastname" > </ion-input>
+        </ion-item>
+        <ion-item class="ion-activated">
+          <ion-label>Email</ion-label>
+          <ion-input  type="email" formControlName="email" > </ion-input>
+        </ion-item>
+        <ion-item class="ion-activated">
+          <ion-label>Telefono</ion-label>
+          <ion-input  type="tel" formControlName="phone" > </ion-input>
+        </ion-item>
+        <ion-item class="ion-activated">
+          <ion-label>Direccion</ion-label>
+          <ion-input  type="text" formControlName="address" > </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-button (click)="captureImage()">
+            <ion-icon name="camera"></ion-icon>
+
+         </ion-button>
+         
+         <img [src]="domSanitizer.bypassSecurityTrustUrl(clickedImage)" width="150px" />
+        
+        </ion-item>
+        <ion-item *ngIf="loanding">
+          <ion-spinner name="crescent"></ion-spinner>
+        </ion-item>
+        <ion-item>
+        <ion-button color="success" block (click)="save()">Guardar</ion-button>
+        <ion-button ion-button block routerLink="/" >salir</ion-button>
+      </ion-item>
+      </form>
+    </ion-card-content>
+    </ion-card>
+
+  
+ 
+</ion-content>

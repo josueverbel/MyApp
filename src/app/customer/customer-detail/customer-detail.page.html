@@ -1,0 +1,66 @@
+
+<ion-header *ngIf="!newTrip">
+  <ion-toolbar>
+    
+   
+    <ion-title> 
+      <ion-button slots="end" routerLink="/" ><ion-icon  name="arrow-back"></ion-icon></ion-button>
+      Detalle de Cliente  
+     </ion-title> 
+  </ion-toolbar>
+</ion-header>
+<ion-item *ngIf="loanding">
+  <ion-spinner name="crescent"></ion-spinner>
+</ion-item>
+<ion-content *ngIf="customer != null && !newTrip">
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title>Datos de Basicos</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      
+      
+        <ion-img [src]="customer.image"  style="height: 120px;"></ion-img>
+      
+      <ion-item  class="ion-activated">
+        <ion-label  > <b>Nombres &nbsp;:</b> {{customer.firstname}}</ion-label>
+      </ion-item>
+      <ion-item  class="ion-activated">
+        <ion-label  > <b>Apellidos :</b> {{customer.lastname}}</ion-label>
+      </ion-item>
+      <ion-item class="ion-activated">
+        <ion-label  > <b>Email &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;:</b> {{customer.email}}</ion-label>
+       </ion-item>
+      <ion-item href="#" class="ion-activated">
+        <ion-label  > <b>Telefono&nbsp; :</b> {{customer.phone}}</ion-label>
+        
+      </ion-item>
+      <ion-item href="#" class="ion-activated">
+        <ion-label  > <b>Direccion:</b> {{customer.address}}</ion-label>
+        
+      </ion-item>
+     
+    </ion-card-content>
+    
+    <ion-list *ngIf="!newTrip">
+      <ion-card-header>
+        <ion-card-title>Viajes
+          <ion-button (click)="addTrip()" ><ion-icon  name="add-circle"></ion-icon></ion-button>
+        </ion-card-title>
+       
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item  class="ion-activated" *ngFor="let trip of customer.trips">
+          <ion-label  class="ion-text-wrap"> <p><b>Ciudad:</b> {{trip.city}}</p>  <p>Pais: {{trip.country}} </p>  <p> <b>Fec:</b> {{trip.dateofservice}} </p></ion-label>
+         
+        </ion-item>
+      </ion-card-content>
+    </ion-list>
+  </ion-card>
+  
+
+</ion-content>
+
+<app-new-trip *ngIf="customer != null && newTrip" (close)="closeNewTrip($event)" [customer]="customer" style="height: auto; min-height: 80vh;"></app-new-trip>
